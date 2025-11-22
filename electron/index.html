@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electron + Java App</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #333;
+      margin-top: 0;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      margin: 5px;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    #response {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 4px;
+      border-left: 4px solid #007bff;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    input {
+      padding: 8px;
+      margin: 5px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Electron + Java Backend</h1>
+    <p>This app demonstrates communication between Electron and Java backend.</p>
+
+    <div>
+      <h3>Test Backend Connection</h3>
+      <button id="getBtn">Get Hello Message</button>
+      <button id="getDataBtn">Get Data</button>
+    </div>
+
+    <div>
+      <h3>Post Data</h3>
+      <input type="text" id="nameInput" placeholder="Enter name">
+      <button id="postBtn">Send to Backend</button>
+    </div>
+
+    <div id="response"></div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

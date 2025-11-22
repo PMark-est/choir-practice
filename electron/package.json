@@ -1,0 +1,64 @@
+{
+  "name": "electron-java-app",
+  "version": "1.0.0",
+  "description": "Electron app with Java backend",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "prebuild": "node download-jre.js",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux"
+  },
+  "build": {
+    "appId": "com.example.electronjavaapp",
+    "productName": "ElectronJavaApp",
+    "files": [
+      "**/*",
+      "!java-backend/src/**/*",
+      "!java-backend/target/classes/**/*",
+      "!java-backend/target/maven-*/**/*",
+      "!jre-download/**/*",
+      "!download-jre.js"
+    ],
+    "extraResources": [
+      {
+        "from": "../java-backend/target/backend-1.0.jar",
+        "to": "backend.jar"
+      },
+      {
+        "from": "jre/",
+        "to": "jre/",
+        "filter": ["**/*"]
+      }
+    ],
+    "win": {
+      "target": ["nsis"],
+      "icon": "build/icon.ico"
+    },
+    "mac": {
+      "target": ["dmg"],
+      "icon": "build/icon.icns",
+      "category": "public.app-category.productivity"
+    },
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "icon": "build/icon.png",
+      "category": "Utility"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1",
+    "extract-zip": "^2.0.1",
+    "tar": "^6.2.0"
+  }
+}
